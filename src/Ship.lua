@@ -13,5 +13,7 @@ function Ship:update(dt, projectiles)
 
     if love.keyboard.wasPressed('space') then
         table.insert(projectiles, Projectile(self.x, self.y - PROJECTILE_LENGTH, 'up'))
+        gSounds['laser']:stop()
+        gSounds['laser']:play()
     end
 end

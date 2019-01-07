@@ -7,7 +7,18 @@ Projectile = Class{}
 function Projectile:init(x, y, direction)
     self.x = x
     self.y = y
+    self.width = PROJECTILE_WIDTH
+    self.height = PROJECTILE_LENGTH
     self.direction = direction
+end
+
+function Projectile:collides(entity)
+    if self.x > entity.x + entity.width or self.x + self.width < entity.x or
+        self.y > entity.y + entity.height or self.y + self.height < entity.y then
+            return false
+    else
+        return true
+    end
 end
 
 function Projectile:update(dt)
